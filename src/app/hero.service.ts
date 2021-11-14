@@ -16,9 +16,7 @@ export class HeroService {
   ) { }
 
   getHeroes(): Observable<Hero[]> {
-    const heroes = of(HEROES);
-    this.log('fetched heroes');
-    return heroes;
+    return this.http.get<Hero[]>(this.heroesUrl);
   }
   getHero(id: number): Observable<Hero> {
     const hero = HEROES.find(h => h.id === id)!;
